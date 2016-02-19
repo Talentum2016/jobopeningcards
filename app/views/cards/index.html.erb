@@ -1,5 +1,10 @@
 <h1>Cards#index</h1>
 <p>Find me in app/views/cards/index.html.erb</p>
 
-<%=render file:"C:/cursoRuby/JobOpeningCards/app/views/users/sessions/new.html.erb"%>
-
+<%- if user_signed_in? %>
+	Bienvenido usuario 
+	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<%else%>
+	<%=render file:"app/views/users/sessions/new.html.erb"%>
+	
+<%end%>
