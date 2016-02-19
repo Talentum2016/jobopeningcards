@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   
+  get 'cards/index'
+
+  get 'cards/show'
+
+  get 'cards/panel'
+
   devise_for :users
-    get ':controller(/:action(/:id(.:format)))'
-    root to: "home#index"
+  
+  get ':controller(/:action(/:id(.:format)))'
+  
+  root to: "cards#index"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
