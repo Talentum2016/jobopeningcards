@@ -11,7 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219093413) do
+ActiveRecord::Schema.define(version: 20160219120103) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "tittle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobopenings", force: :cascade do |t|
+    t.string   "tittle"
+    t.string   "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "user_id"
+    t.integer  "profession_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "jobopenings", ["profession_id"], name: "index_jobopenings_on_profession_id"
+  add_index "jobopenings", ["user_id"], name: "index_jobopenings_on_user_id"
+
+  create_table "professions", force: :cascade do |t|
+    t.string   "tittle"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "category_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "professions", ["category_id"], name: "index_professions_on_category_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
