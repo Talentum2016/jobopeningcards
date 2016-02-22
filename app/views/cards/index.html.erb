@@ -13,6 +13,9 @@ for jobopening in jobopenings
 %>
 <form action="/cards/search">
 	<input type="text" name="search_value" placeholder="Buscar..." />
+	<select name="search_category">
+		<%=options_for_select(@search_options)%>
+	</select>
 	<input type="submit" value="buscar" />
 </form>
 
