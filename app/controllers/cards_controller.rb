@@ -9,4 +9,8 @@ class CardsController < ApplicationController
 
   def panel
   end
+  
+  def add
+    
+  end
 end
