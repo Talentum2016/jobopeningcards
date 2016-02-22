@@ -8,7 +8,6 @@ class CardsController < ApplicationController
     for category in categories
       @search_options << [category.tittle,category.id]
     end
-    
   end
 
   def show
@@ -43,13 +42,18 @@ class CardsController < ApplicationController
   def search
     jobopenings=Jobopening.all
     @jobopenings=[]
+    @search_options=[]
+    categories=Category.all
+    for category in categories
+      @search_options << [category.tittle,category.id]
+    end
     text=params[:search_value]
     category=params[:search_category]
     for jobopening in jobopenings
         if jobopening.tittle.downcase.include? text.downcase
-          #if jobopening.category.id==category
+          if jobopening.profession.category.id==category.to_i
             @jobopenings << jobopening
-          #end
+          end
         end
     end
     render :index
