@@ -7,13 +7,24 @@
 	
 <%end%>
 
-<% jobopenings=Jobopening.all
-for jobopening in jobopenings
+<form action="/cards/search">
+	<input type="text" name="search_value" placeholder="Buscar..." />
+	<input type="submit" value="buscar" />
+</form>
+
+<% 
+for jobopening in @jobopenings
 %>
 <div style="border-style: solid;margin: 5px">
 	<table>
 	<tr>
 		<td>TITULO DE LA OFERTA:<%=jobopening.tittle%></td>
+	</tr>
+	<tr>
+		<td>CATEGORIA:<%=jobopening.profession.category.tittle%></td>
+	</tr>
+	<tr>
+		<td>PROFESION:<%=jobopening.profession.tittle%></td>
 	</tr>
 	<tr>
 		<td>DESCRIPCION:<%=jobopening.description%></td>
