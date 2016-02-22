@@ -7,10 +7,28 @@ class CardsController < ApplicationController
   def show
   end
 
-  def panel
+  def dashboard
+    
   end
   
-  def add
+  def add 
+    @grouped_options = []
+    categories = Category.all 
+    professions = Profession.all
+     for category in categories
+        auxCategory = [category.tittle]
+       @grouped_options << auxCategory
+         auxOptions = []
+         auxCategory << auxOptions
+        for profession in professions
+          if category.id == profession.category.id
+            auxOptions << [profession.tittle, profession.id]
+          end
+        end
+     end
+  end
+  
+  def create
     
   end
 end

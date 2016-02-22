@@ -1,0 +1,26 @@
+<h2> Añadir anuncio</h2>
+	
+	<fieldset>
+	<%= form_tag({controller:"Jobopening",action:"add"},method:"get") do%>
+	<%= label_tag(:tittle, "Título de la oferta:")%><br />
+	<%= text_field_tag(:tittle)%><br />
+	<%= label_tag(:description, "Descripción:")%><br />
+	<%= text_field_tag(:description)%><br />
+	<%= label_tag(:image, "Imagen:")%><br />
+	<%= text_field_tag(:image)%><br />
+	<%= label_tag(:requirement, "Requisitos:")%><br />
+	<%= text_field_tag(:requirement)%><br />
+	<%= label_tag(:salary_min, "Salario Mínimo:")%><br />
+	<%= text_field_tag(:salary_min)%><br />
+	<%= label_tag(:salary_max, "Salario Máximo:")%><br />
+	<%= text_field_tag(:salary_max)%><br />
+	<%= label_tag(:province, "Provincia")%><br />
+	<%= text_field_tag(:province)%><br />
+	<select>
+		<%= grouped_options_for_select(@grouped_options)%>	
+	</select>
+	
+	<%= submit_tag("Crear Anuncio")%>
+	<% end %>
+	</fieldset>	
+	
