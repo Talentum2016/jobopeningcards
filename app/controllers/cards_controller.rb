@@ -1,6 +1,5 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!,
-          except: [:index, :show]
           except: [:index, :show, :search]
   def index
     @jobopenings=Jobopening.all
