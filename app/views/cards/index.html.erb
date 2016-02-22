@@ -2,21 +2,32 @@
 	Bienvenido usuario 
 	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 <%else%>
-	<%=render file:"app/views/users/sessions/new.html.erb"%>
+	<div style="text-align: right"><%=render file:"app/views/users/sessions/new.html.erb"%></div>
+	
 	
 <%end%>
 
 <% jobopenings=Jobopening.all
 for jobopening in jobopenings
 %>
-
-<table>
+<div style="border-style: solid;margin: 5px">
+	<table>
 	<tr>
-		<td><%=jobopening.tittle%></td>
+		<td>TITULO DE LA OFERTA:<%=jobopening.tittle%></td>
 	</tr>
 	<tr>
-		<td><%=jobopening.description%></td>
+		<td>DESCRIPCION:<%=jobopening.description%></td>
 	</tr>	
-	
+	<tr>
+		<td>REQUISITOS:<%=jobopening.requirement%></td>
+	</tr>
+	<tr>
+		<td>FRANJA SALARIAL:<%=jobopening.salary_min%>-<%=jobopening.salary_max%></td>
+	</tr>
+	<tr>
+		<td>TIPO DE CONTRATO:<%=jobopening.contract%></td>
+	</tr>
 </table>
+</div>
+
 <%end%>
