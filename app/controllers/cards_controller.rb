@@ -62,13 +62,14 @@ class CardsController < ApplicationController
     # province = params[:province]
 
     createHash = {}
+    createHash[:user_id] = current_user.id
     createHash[:tittle] = tittle
     createHash[:description]  = description
     # createHash[:image] = image
     createHash[:requirement] = requirement
     createHash[:salary_min] = salary_min
     createHash[:salary_max] = salary_max
-    createHash[:profession] = profession
+    createHash[:profession] = Profession.find profession.to_i
     # createHash[:province] = province
     
    jobopenings=Jobopening.create(createHash)
@@ -113,8 +114,7 @@ class CardsController < ApplicationController
           end
         end
      end
-    #id=params[:id]
-    id=2
+    id=params[:id]
     @jobopening=Jobopening.find id   
   end
   

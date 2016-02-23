@@ -32,4 +32,10 @@
 <a href="/cards/index">Volver</a><br />
 
 
+
+
+
+<%if user_signed_in? && current_user.id==@jobopening.user_id %> 
+	<a href="/cards/edit?id=<%=@jobopening.id%>">Editar</a>
+<%end%>
 	
