@@ -1,0 +1,26 @@
+<h2> Modificar anuncio</h2>
+	
+	<fieldset>
+	<%= form_tag({controller:"cards",action:"update_jobopening"},method:"get") do%>
+	<%= hidden_field_tag 'id', @jobopening.id%>
+	<%= label_tag(:tittle, "Título de la oferta:")%><br />
+	<%= text_field_tag(:tittle,value=@jobopening.tittle)%><br />
+	<%= label_tag(:description, "Descripción:")%><br />
+	<%= text_field_tag(:description,value=@jobopening.description)%><br />
+	<%= label_tag(:image, "Imagen:")%><br />
+	<%= text_field_tag(:image,"",disabled: true)%><br />
+	<%= label_tag(:requirement, "Requisitos:")%><br />
+	<%= text_field_tag(:requirement,value=@jobopening.requirement)%><br />
+	<%= label_tag(:salary_min, "Salario Mínimo:")%><br />
+	<%= text_field_tag(:salary_min,value=@jobopening.salary_min)%><br />
+	<%= label_tag(:salary_max, "Salario Máximo:")%><br />
+	<%= text_field_tag(:salary_max,value=@jobopening.salary_max)%><br />
+	<%= label_tag(:province, "Provincia")%><br />
+	<%= text_field_tag(:province,"",disabled: true)%><br />
+	<%= label_tag(:prpfession, "Profesión")%><br />
+	<%= select_tag(:profession, grouped_options_for_select(@grouped_options,selected_key=@jobopening.profession.id))%><br /><br />
+	
+	<%= submit_tag("Modificar")%>
+	<% end %>
+	</fieldset>	
+	
