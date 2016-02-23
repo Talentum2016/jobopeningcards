@@ -1,3 +1,34 @@
 <a href="/cards/add">Añadir nueva oferta</a>
 
-Lista de ofertas
+<table>
+		<tr>
+			<th>Título de la Oferta</th>
+			<th>Descripción</th>
+			<!-- <th>Imagen</th>	 -->		
+			<th>Requisitos</th>	
+			<th>Franja Salarial</th>	
+			<!-- <th>Provincia</th> -->	
+			<th>Puesto de trabajo</th>	
+			
+		</tr>
+
+	
+	<% @jobopenings = Jobopening.all
+		for jobopening in @jobopenings %>
+		
+			<tr>
+				<td><%=jobopening.tittle%></td>
+				<td><%=jobopening.description%></td>
+				<td><%=jobopening.requirement%></td> 
+				<td><%=jobopening.salary_min%></td> 
+				<td><%=jobopening.salary_max%></td> 
+				<td><%=jobopening.profession.tittle%></td> 
+	
+				<td><a href="/cards/delete?id=<%=jobopening.id%>">Borrar</a></td>	
+				<td><a href="/cards/edit?id=<%=jobopening.id%>">Editar</a></td>		
+				
+			</tr>
+		<% end%>
+		
+		</tbody>		
+	</table>
