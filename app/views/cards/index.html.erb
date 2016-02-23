@@ -1,7 +1,7 @@
 <%if user_signed_in? %>
 	Bienvenido <%=current_user.email%> 
 	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-	<a href="cards/dashboard">Panel de administracion</a>
+	<a href="/cards/dashboard">Panel de administracion</a>
 <%else%>
 	<div style="text-align: right"><%=render file:"app/views/users/sessions/new.html.erb"%></div>
 <%end%>
