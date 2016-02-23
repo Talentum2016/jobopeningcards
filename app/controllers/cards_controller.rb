@@ -13,9 +13,24 @@ class CardsController < ApplicationController
   def show
   end
 
-  def dashboard
+  def list
+    @jobopenings=Jobopening.all
+      if @jobopenings.size > 0 
+        puts @jobopenings[0].tittle
+      end
+  end
+  
+  
+  
+  def delete
+    id = params[:id].to_i
+    Jobopening.delete id
+    @jobopenings = Jobopening.all
+    render :dashboard
     
   end
+  
+  
   
   def add 
     @grouped_options = []
@@ -35,6 +50,29 @@ class CardsController < ApplicationController
   end
   
   def create
+    tittle = params[:tittle]
+    description  = params[:description]
+    # image = params[:image]
+    requirement = params[:requirement]
+    salary_min = params[:salary_min]
+    salary_max = params[:salary_max]
+    profession = params[:profession]
+    # province = params[:province]
+
+    createHash = {}
+    createHash[:tittle] = tittle
+    createHash[:description]  = description
+    # createHash[:image] = image
+    createHash[:requirement] = requirement
+    createHash[:salary_min] = salary_min
+    createHash[:salary_max] = salary_max
+    createHash[:profession] = profession
+    # createHash[:province] = province
+    
+   jobopenings=Jobopening.create(createHash)
+    
+   @jobopenings=Jobopening.all
+   render "dashboard"
     
   end
 

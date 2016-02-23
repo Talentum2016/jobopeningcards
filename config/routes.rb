@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   get 'cards/show'
 
+  get 'cards/add'
+  
+  get 'cards/dashboard'
+
   get 'cards/panel'
 
   devise_for :users
