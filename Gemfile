@@ -49,3 +49,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 #gem for images
 gem "paperclip", "~> 4.3"
+#bootstrap
+gem 'bootstrap-sass'
+#special simbols for icons
+gem 'font-awesome-sass'

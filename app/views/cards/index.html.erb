@@ -9,6 +9,7 @@
 <form action="/cards/search">
 	<input type="text" name="search_value" placeholder="Buscar..." />
 	<select name="search_category">
+		<option disabled selected> -- selecciona una opcion -- </option>
 		<%=options_for_select(@search_options)%>
 	</select>
 	<input type="submit" value="Buscar" />

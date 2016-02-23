@@ -91,7 +91,7 @@ class CardsController < ApplicationController
     category=params[:search_category]
     for jobopening in jobopenings
         if jobopening.tittle.downcase.include? text.downcase
-          if jobopening.profession.category.id==category.to_i
+          if jobopening.profession.category.id==category.to_i || category == nil
             @jobopenings << jobopening
           end
         end
