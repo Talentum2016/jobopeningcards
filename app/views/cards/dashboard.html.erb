@@ -8,14 +8,11 @@
 			<th>Requisitos</th>	
 			<th>Franja Salarial</th>	
 			<!-- <th>Provincia</th> -->	
-			<th>Puesto de trabajo</th>	
-			
+			<th>Puesto de trabajo</th>				
 		</tr>
-
-	
+		
 	<% @jobopenings = Jobopening.all
-		for jobopening in @jobopenings 
-			if current_user.id==jobopening.user_id%>
+		for jobopening in current_user.jobopening
 				<tr>
 					<td><%=jobopening.tittle%></td>
 					<td><%=jobopening.description%></td>
@@ -23,13 +20,8 @@
 					<td><%=jobopening.salary_min%></td> 
 					<td><%=jobopening.salary_max%></td> 
 					<td><%=jobopening.profession.tittle%></td> 
-		
 					<td><a href="/cards/delete?id=<%=jobopening.id%>">Borrar</a></td>	
-					<td><a href="/cards/edit?id=<%=jobopening.id%>">Editar</a></td>		
-					
+					<td><a href="/cards/edit?id=<%=jobopening.id%>">Editar</a></td>					
 				</tr>
-			<%end%>
-		<% end%>
-		
-		</tbody>		
-	</table>
+		<% end%>		
+</table>

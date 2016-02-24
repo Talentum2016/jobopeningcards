@@ -1,54 +1,26 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!,
           except: [:index, :show, :search]
+  
   def index
     @jobopenings=Jobopening.all
-    @search_options=[]
-    categories=Category.all
-    for category in categories
-      @search_options << [category.tittle,category.id]
-    end
+    @search_options=get_category_for_select
   end
 
   def show
     id=params[:id]
     @jobopening=Jobopening.find id   
   end
-
-  def list
-    @jobopenings=Jobopening.all
-      if @jobopenings.size > 0 
-        puts @jobopenings[0].tittle
-      end
-  end
-  
-  
-  
+ 
   def delete
     id = params[:id].to_i
     Jobopening.delete id
     @jobopenings = Jobopening.all
     render :dashboard
-    
   end
   
-  
-  
   def add 
-    @grouped_options = []
-    categories = Category.all 
-    professions = Profession.all
-     for category in categories
-        auxCategory = [category.tittle]
-       @grouped_options << auxCategory
-         auxOptions = []
-         auxCategory << auxOptions
-        for profession in professions
-          if category.id == profession.category.id
-            auxOptions << [profession.tittle, profession.id]
-          end
-        end
-     end
+    @grouped_options = get_professions_grouped
   end
   
   def create
@@ -75,18 +47,13 @@ class CardsController < ApplicationController
    jobopenings=Jobopening.create(createHash)
     
    @jobopenings=Jobopening.all
-   render "dashboard"
-    
+   render "dashboard" 
   end
 
   def search
     jobopenings=Jobopening.all
     @jobopenings=[]
-    @search_options=[]
-    categories=Category.all
-    for category in categories
-      @search_options << [category.tittle,category.id]
-    end
+    @search_options=get_category_for_select
     text=params[:search_value]
     category=params[:search_category]
     for jobopening in jobopenings
@@ -100,20 +67,7 @@ class CardsController < ApplicationController
   end
   
   def edit
-    @grouped_options = []
-    categories = Category.all 
-    professions = Profession.all
-     for category in categories
-        auxCategory = [category.tittle]
-       @grouped_options << auxCategory
-         auxOptions = []
-         auxCategory << auxOptions
-        for profession in professions
-          if category.id == profession.category.id
-            auxOptions << [profession.tittle, profession.id]
-          end
-        end
-     end
+    @grouped_options = get_professions_grouped
     id=params[:id]
     @jobopening=Jobopening.find id   
   end
@@ -133,4 +87,33 @@ class CardsController < ApplicationController
     render :dashboard
   end
   
+  private
+  
+  def get_professions_grouped
+    grouped_options = []
+    categories = Category.all 
+    professions = Profession.all
+    for category in categories
+       auxCategory = [category.tittle.strip]
+       grouped_options << auxCategory
+       auxOptions = []
+       auxCategory << auxOptions
+       professions=category.profession.sort_by{|m|m.tittle.downcase}
+       for profession in professions
+         auxOptions << [profession.tittle.strip, profession.id]
+       end
+    end
+    grouped_options.sort_by{|m|m.first.downcase}
+  end
+  
+  def get_category_for_select
+    search_options=[]
+    categories=Category.all
+    for category in categories
+      search_options << [category.tittle.strip,category.id] 
+    end
+    search_options.sort_by{|m|m.first.downcase}
+  end
+
 end
+
