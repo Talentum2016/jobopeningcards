@@ -12,7 +12,7 @@
 		</tr>
 		
 	<% @jobopenings = Jobopening.all
-		for jobopening in current_user.jobopening
+		for jobopening in current_user.jobopening%>
 				<tr>
 					<td><%=jobopening.tittle%></td>
 					<td><%=jobopening.description%></td>

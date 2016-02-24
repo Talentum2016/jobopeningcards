@@ -1,0 +1,9 @@
+
+
+
+<%= form_for @user, url:"/attachments/"+@user.id.to_s, html: { multipart: true } do |form| %>
+  <%= form.file_field :image %><br />
+  <%= submit_tag("Añadir")%><br />
+<% end %>
+<%= image_tag @user.image.url %>
+

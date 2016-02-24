@@ -86,7 +86,12 @@ class CardsController < ApplicationController
     jobopening.save
     render :dashboard
   end
-  
+
+  def options_user
+    @user=current_user
+    
+  end
+
   private
   
   def get_professions_grouped
