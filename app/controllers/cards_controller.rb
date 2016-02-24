@@ -88,8 +88,13 @@ class CardsController < ApplicationController
   end
 
   def options_user
-    @user=current_user
-    
+    @user=User.find current_user.id      
+  end
+  
+  def update_photo
+    @user=User.find current_user.id
+    @user.update(user_params)
+    render :options_user
   end
 
   private
@@ -119,6 +124,10 @@ class CardsController < ApplicationController
     end
     search_options.sort_by{|m|m.first.downcase}
   end
-
+  
+  def user_params
+    params.require(:user).permit(:image)
+  end
+  
 end
 

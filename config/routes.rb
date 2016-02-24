@@ -9,12 +9,15 @@ Rails.application.routes.draw do
   get 'cards/dashboard'
 
   get 'cards/panel'
+  
+  patch '/cards/update_photo'
 
   devise_for :users
   
   get ':controller(/:action(/:id(.:format)))'
   
   root to: "cards#index"
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
