@@ -24,7 +24,7 @@ for jobopening in @jobopenings
 			<td><h2><%=jobopening.tittle%></h2></td>
 		</tr>
 		<tr>
-			<td><%=jobopening.description%></td>
+			<td><%=jobopening.description[0..150]+"..."%></td>
 		</tr>	
 		
 		<tr>

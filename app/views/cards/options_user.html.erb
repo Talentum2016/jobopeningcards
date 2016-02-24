@@ -1,9 +1,0 @@
-
-
-
-<%= form_for @user, :url=>"/cards/update_photo" do |form| %>
-  <%= form.file_field :image %><br />
-  <%= form.submit%><br />
-<% end %>
-<%= image_tag @user.image.url %>
-

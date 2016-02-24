@@ -1,0 +1,26 @@
+
+
+<h2>DATOS DE LA EMPRESA</h2>
+
+
+<%= form_tag({controller:"cards",action:"update_data"},method:"get") do%>
+<%=label_tag(:email, "Email:")%><br />
+<%=text_field_tag(:email,value=@user.email)%><br />
+<%=label_tag(:company, "Empresa:")%><br />
+<%=text_field_tag(:company,value=@user.company)%><br />
+<%=label_tag(:cif, "CIF:")%><br />
+<%=text_field_tag(:cif,value=@user.cif)%><br />  
+ 
+<%= submit_tag("Guardar")%><br />  
+<% end %>
+
+
+<%= form_for @user, :url=>"/cards/update_photo" do |form| %>
+<%=label_tag(:image, "Logo:")%><br />
+<%= form.file_field :image %> 
+<%= form.submit "Guardar foto"%><br /><br />
+<%= image_tag @user.image.url %><br /><br />
+
+<% end %>
+
+

@@ -87,14 +87,23 @@ class CardsController < ApplicationController
     render :dashboard
   end
 
-  def options_user
+  def user_options
     @user=User.find current_user.id      
   end
   
   def update_photo
     @user=User.find current_user.id
     @user.update(user_params)
-    render :options_user
+    render :user_options
+  end
+  
+   def update_data
+    @user=User.find current_user.id
+    @user.email=params[:email]
+    @user.company=params[:company]
+    @user.cif=params[:cif]
+    @user.save
+    render :user_options
   end
 
   private
@@ -127,6 +136,7 @@ class CardsController < ApplicationController
   
   def user_params
     params.require(:user).permit(:image)
+    
   end
   
 end
