@@ -5,22 +5,22 @@
 
 <%= form_tag({controller:"cards",action:"update_data"},method:"get") do%>
 <%=label_tag(:email, "Email:")%><br />
-<%=text_field_tag(:email,value=@user.email)%><br />
+<%=text_field_tag(:email,value=@user.email)%><%= @user.errors[:email].first %><br />
 <%=label_tag(:company, "Empresa:")%><br />
-<%=text_field_tag(:company,value=@user.company)%><br />
+<%=text_field_tag(:company,value=@user.company)%><%= @user.errors[:company].first %><br />
 <%=label_tag(:cif, "CIF:")%><br />
-<%=text_field_tag(:cif,value=@user.cif)%><br />  
- 
-<%= submit_tag("Guardar")%><br />  
+<%=text_field_tag(:cif,value=@user.cif)%><%= @user.errors[:cif].first %><br /><br />   
+	
+<%= submit_tag("Modificar datos")%><br /><br /> 
 <% end %>
 
-
 <%= form_for @user, :url=>"/cards/update_photo" do |form| %>
-<%=label_tag(:image, "Logo:")%><br />
-<%= form.file_field :image %> 
-<%= form.submit "Guardar foto"%><br /><br />
-<%= image_tag @user.image.url %><br /><br />
+<%=label_tag(:image, "Logo empresa:")%><br />
+<%= form.file_field :image %><br />
 
+<%= image_tag @user.image.url %><br /><br />
+<%= form.submit "Guardar foto"%><br /><br />
+<a href="/cards/dashboard">Volver</a>
 <% end %>
 
 

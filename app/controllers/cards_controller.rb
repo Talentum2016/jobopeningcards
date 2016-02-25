@@ -44,9 +44,10 @@ class CardsController < ApplicationController
     createHash[:profession] = Profession.find profession.to_i
     # createHash[:province] = province
     
-   jobopenings=Jobopening.create(createHash)
+   jobopening=Jobopening.create(createHash)
     
    @jobopenings=Jobopening.all
+   
    render "dashboard" 
   end
 
@@ -103,7 +104,12 @@ class CardsController < ApplicationController
     @user.company=params[:company]
     @user.cif=params[:cif]
     @user.save
+    if @user.errors.any? then
+      puts "email vacio"
+    end
     render :user_options
+    
+    
   end
 
   private

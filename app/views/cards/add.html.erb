@@ -18,7 +18,7 @@
 	<%= label_tag(:province, "Provincia")%><br />
 	<%= text_field_tag(:province,"",disabled: true)%><br />
 	<%= label_tag(:prpfession, "Profesión")%><br />
-	<%= select_tag(:profession, grouped_options_for_select(@grouped_options))%><br /><br />
+	<%= select_tag(:profession, grouped_options_for_select(@grouped_options), include_blank:true)%><br /><br />
 
 	<%= submit_tag("Crear Anuncio")%>
 	
