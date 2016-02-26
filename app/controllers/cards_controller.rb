@@ -3,19 +3,19 @@ class CardsController < ApplicationController
           except: [:index, :show, :search]
   
   def index
-    @jobopenings=Jobopening.all
+    @job_openings=JobOpening.all
     @search_options=get_category_for_select
   end
 
   def show
     id=params[:id]
-    @jobopening=Jobopening.find id   
+    @job_opening=JobOpening.find id   
   end
  
   def delete
     id = params[:id].to_i
-    Jobopening.delete id
-    @jobopenings = Jobopening.all
+    JobOpening.delete id
+    @job_openings = JobOpening.all
     render :dashboard
   end
   
@@ -24,7 +24,7 @@ class CardsController < ApplicationController
   end
   
   def create
-    tittle = params[:tittle]
+    title = params[:title]
     description  = params[:description]
     # image = params[:image]
     requirement = params[:requirement]
@@ -35,7 +35,7 @@ class CardsController < ApplicationController
 
     createHash = {}
     createHash[:user_id] = current_user.id
-    createHash[:tittle] = tittle
+    createHash[:title] = title
     createHash[:description]  = description
     # createHash[:image] = image
     createHash[:requirement] = requirement
@@ -44,23 +44,23 @@ class CardsController < ApplicationController
     createHash[:profession] = Profession.find profession.to_i
     # createHash[:province] = province
     
-   jobopening=Jobopening.create(createHash)
+   job_opening=JobOpening.create(createHash)
     
-   @jobopenings=Jobopening.all
+   @job_openings=JobOpening.all
    
    render "dashboard" 
   end
 
   def search
-    jobopenings=Jobopening.all
-    @jobopenings=[]
+    job_openings=JobOpening.all
+    @job_openings=[]
     @search_options=get_category_for_select
     text=params[:search_value]
     category=params[:search_category]
-    for jobopening in jobopenings
-        if jobopening.tittle.downcase.include? text.downcase
-          if jobopening.profession.category.id==category.to_i || category == nil
-            @jobopenings << jobopening
+    for job_opening in job_openings
+        if job_opening.title.downcase.include? text.downcase
+          if job_opening.profession.category.id==category.to_i || category == nil
+            @job_openings << job_opening
           end
         end
     end
@@ -70,21 +70,21 @@ class CardsController < ApplicationController
   def edit
     @grouped_options = get_professions_grouped
     id=params[:id]
-    @jobopening=Jobopening.find id   
+    @job_opening=JobOpening.find id   
   end
   
-  def update_jobopening
+  def update_job_opening
     id=params[:id]
-    jobopening=Jobopening.find id.to_i 
-    jobopening.tittle=params[:tittle]
-    jobopening.description=params[:description]
-    #jobopening.image=params[:image]
-    jobopening.requirement=params[:requirement]
-    jobopening.salary_min=params[:salary_min]
-    jobopening.salary_max=params[:salary_max]
-    #jobopening.province=params[:province]
-    jobopening.profession=Profession.find params[:profession].to_i
-    jobopening.save
+    job_opening=JobOpening.find id.to_i 
+    job_opening.title=params[:title]
+    job_opening.description=params[:description]
+    #job_opening.image=params[:image]
+    job_opening.requirement=params[:requirement]
+    job_opening.salary_min=params[:salary_min]
+    job_opening.salary_max=params[:salary_max]
+    #job_opening.province=params[:province]
+    job_opening.profession=Profession.find params[:profession].to_i
+    job_opening.save
     render :dashboard
   end
 
@@ -119,13 +119,13 @@ class CardsController < ApplicationController
     categories = Category.all 
     professions = Profession.all
     for category in categories
-       auxCategory = [category.tittle.strip]
+       auxCategory = [category.title.strip]
        grouped_options << auxCategory
        auxOptions = []
        auxCategory << auxOptions
-       professions=category.profession.sort_by{|m|m.tittle.downcase}
+       professions=category.professions.sort_by{|m|m.title.downcase}
        for profession in professions
-         auxOptions << [profession.tittle.strip, profession.id]
+         auxOptions << [profession.title.strip, profession.id]
        end
     end
     grouped_options.sort_by{|m|m.first.downcase}
@@ -135,7 +135,7 @@ class CardsController < ApplicationController
     search_options=[]
     categories=Category.all
     for category in categories
-      search_options << [category.tittle.strip,category.id] 
+      search_options << [category.title.strip,category.id] 
     end
     search_options.sort_by{|m|m.first.downcase}
   end

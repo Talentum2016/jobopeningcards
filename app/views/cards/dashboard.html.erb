@@ -11,17 +11,17 @@
 			<th>Puesto de trabajo</th>				
 		</tr>
 		
-	<% @jobopenings = Jobopening.all
-		for jobopening in current_user.jobopening%>
+	<% @job_openings = JobOpening.all
+		for job_opening in current_user.job_openings%>
 				<tr>
-					<td><%=jobopening.tittle%></td>
-					<td><%=jobopening.description%></td>
-					<td><%=jobopening.requirement%></td> 
-					<td><%=jobopening.salary_min%></td> 
-					<td><%=jobopening.salary_max%></td> 
-					<td><%=jobopening.profession.tittle%></td> 
-					<td><a href="/cards/delete?id=<%=jobopening.id%>">Borrar</a></td>	
-					<td><a href="/cards/edit?id=<%=jobopening.id%>">Editar</a></td>					
+					<td><%=job_opening.title%></td>
+					<td><%=job_opening.description%></td>
+					<td><%=job_opening.requirement%></td> 
+					<td><%=job_opening.salary_min%></td> 
+					<td><%=job_opening.salary_max%></td> 
+					<td><%=job_opening.profession.title%></td> 
+					<td><a href="/cards/delete?id=<%=job_opening.id%>">Borrar</a></td>	
+					<td><a href="/cards/edit?id=<%=job_opening.id%>">Editar</a></td>					
 				</tr>
 		<% end%>		
 </table>

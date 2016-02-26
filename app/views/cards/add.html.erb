@@ -1,9 +1,12 @@
 <h2> Añadir anuncio</h2>
 	
 	<fieldset>
+
+		
+		
 	<%= form_tag({controller:"cards",action:"create"},method:"get") do%>
-	<%= label_tag(:tittle, "Título de la oferta:")%><br />
-	<%= text_field_tag(:tittle)%><br />
+	<%= label_tag(:title, "Título de la oferta:")%><br />
+	<%= text_field_tag(:title)%><br />
 	<%= label_tag(:description, "Descripción:")%><br />
 	<%= text_field_tag(:description)%><br />
 	<%= label_tag(:image, "Imagen:")%><br />

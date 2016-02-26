@@ -1,7 +1,7 @@
 class CreateProfessions < ActiveRecord::Migration
   def change
     create_table :professions do |t|
-      t.string :tittle
+      t.string :title
       t.attachment :image
       t.belongs_to :category, index:true
       t.timestamps null: false

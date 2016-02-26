@@ -14,3 +14,27 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function alert_error(text){
+  $.notify(text, {
+    delay: 2000 ,
+    type: 'danger',
+    icon: 'fa fa-ban',
+      animate: {
+        enter: 'animated bounceInDown',
+        exit: 'animated bounceOutUp'
+      }
+  });
+}
+
+function alert_notice(text){
+  $.notify(text, {
+    delay: 2000 ,
+    type: 'success',
+    icon: 'fa fa-check',
+    animate: {
+      enter: 'animated bounceInDown',
+      exit: 'animated bounceOutUp'
+    }
+  });
+}

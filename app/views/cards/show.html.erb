@@ -4,25 +4,25 @@
 <div style="border-style: solid;margin: 5px">
 	<table>
 		<tr>
-			<td>TITULO DE LA OFERTA:<%=@jobopening.tittle%></td>
+			<td>TITULO DE LA OFERTA:<%=@job_opening.title%></td>
 		</tr>
 		<tr>
-			<td>CATEGORIA:<%=@jobopening.profession.category.tittle%></td>
+			<td>CATEGORIA:<%=@job_opening.profession.category.title%></td>
 		</tr>
 		<tr>
-			<td>PROFESION:<%=@jobopening.profession.tittle%></td>
+			<td>PROFESION:<%=@job_opening.profession.title%></td>
 		</tr>
 		<tr>
-			<td>DESCRIPCION:<%=@jobopening.description%></td>
+			<td>DESCRIPCION:<%=@job_opening.description%></td>
 		</tr>	
 		<tr>
-			<td>REQUISITOS:<%=@jobopening.requirement%></td>
+			<td>REQUISITOS:<%=@job_opening.requirement%></td>
 		</tr>
 		<tr>
-			<td>FRANJA SALARIAL:<%=@jobopening.salary_min%>-<%=@jobopening.salary_max%></td>
+			<td>FRANJA SALARIAL:<%=@job_opening.salary_min%>-<%=@job_opening.salary_max%></td>
 		</tr>
 		<tr>
-			<td>TIPO DE CONTRATO:<%=@jobopening.contract%></td>
+			<td>TIPO DE CONTRATO:<%=@job_opening.contract%></td>
 		</tr>
 	</table>
 
@@ -30,7 +30,7 @@
 <a href="/cards/index">Volver</a><br />
 
 
-<%if user_signed_in? && current_user.id==@jobopening.user_id %> 
-	<a href="/cards/edit?id=<%=@jobopening.id%>">Editar</a>
+<%if user_signed_in? && current_user.id==@job_opening.user_id %> 
+	<a href="/cards/edit?id=<%=@job_opening.id%>">Editar</a>
 <%end%>
 	

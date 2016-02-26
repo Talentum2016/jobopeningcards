@@ -1,7 +1,7 @@
-class CreateJobopenings < ActiveRecord::Migration
+class CreateJobOpenings < ActiveRecord::Migration
   def change
-    create_table :jobopenings do |t|
-      t.string :tittle
+    create_table :job_openings do |t|
+      t.string :title
       t.string :description
       t.attachment :image
       t.string :requirement

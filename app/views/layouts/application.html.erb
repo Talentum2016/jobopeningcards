@@ -7,33 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%if notice%>
-		<script>
-			$.notify('<%= notice %>', {
-				delay: 2000 ,
-				type: 'success',
-				icon: 'fa fa-check',
-				animate: {
-					enter: 'animated bounceInDown',
-					exit: 'animated bounceOutUp'
-				}
-			});
-		</script>
-	<%end%>
-	<%if alert%>
-		<script>
-			$.notify('<%= alert %>', {
-				delay: 2000 ,
-				type: 'danger',
-				icon: 'fa fa-ban',
-				animate: {
-					enter: 'animated bounceInDown',
-					exit: 'animated bounceOutUp'
-				}
-			});
-		</script>
-	<%end%>
+
 <%= yield %>
+
+<%if notice%>
+  <script>
+	$(document).ready(alert_notice('<%= notice %>'))
+  </script>
+<%end%>
+<%if alert%>
+  <script>
+	$(document).ready(alert_error('<%= alert %>'))
+  </script>
+<%end%>
 
 </body>
 </html>

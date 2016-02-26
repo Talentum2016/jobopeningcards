@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
 
-has_many :profession, :dependent => :destroy
+has_many :professions, :dependent => :destroy
 end
