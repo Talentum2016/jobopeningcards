@@ -69,47 +69,19 @@ class CardsController < ApplicationController
     @user.update(user_params)
     render :user_options
   end
-  
-   def update_data
-    @user=User.find current_user.id
-    @user.email=params[:email]
-    @user.company=params[:company]
-    @user.cif=params[:cif]
-    @user.save
-    if @user.errors.any? then
-      puts "email vacio"
-    end
-    render :user_options
-    
-    
-  end
 
   private
   
   def get_professions_grouped
-    grouped_options = []
-    categories = Category.all 
-    professions = Profession.all
-    for category in categories
-       auxCategory = [category.title.strip]
-       grouped_options << auxCategory
-       auxOptions = []
-       auxCategory << auxOptions
-       professions=category.professions.sort_by{|m|m.title.downcase}
-       for profession in professions
-         auxOptions << [profession.title.strip, profession.id]
-       end
-    end
-    grouped_options.sort_by{|m|m.first.downcase}
+    @grouped_options = Category.order(:title).map {
+                            |category| [category.title.strip, 
+                              category.professions.order(:title).map {
+                                |profession| [profession.title.strip,profession.id]}]} 
   end
   
   def get_category_for_select
-    search_options=[]
-    categories=Category.all
-    for category in categories
-      search_options << [category.title.strip,category.id] 
-    end
-    search_options.sort_by{|m|m.first.downcase}
+    Category.order(:title).map{|category| [category.title.strip,category.id]}
+            .unshift(['-- selecciona una opción --',disabled: true, selected: true] )
   end
   
   def job_opening_params

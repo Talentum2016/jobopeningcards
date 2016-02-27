@@ -1,12 +1,8 @@
-<form action="/cards/search">
-	<input type="text" name="search_value" placeholder="Buscar..." />
-	<select name="search_category">
-		<option disabled selected> -- selecciona una opcion -- </option>
-		<%=options_for_select(@search_options)%>
-	</select>
-	<input type="submit" value="Buscar" />
-</form>
-
+<%= form_tag({controller: "cards", action: "search"}, method: "get") do%>
+    <%= search_field_tag(:search_value, '', placeholder: 'Buscar...') %> 
+	<%= select_tag(:search_category, options_for_select(@search_options))%>
+	<%= submit_tag ('Buscar')%>
+<%end%>
 <% 
 for job_opening in @job_openings
 %>
