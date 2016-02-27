@@ -10,8 +10,15 @@ Rails.application.routes.draw do
 
   get 'cards/panel'
   
+  post 'cards/create'
+  
   patch '/cards/update_photo'
-
+  
+    patch '/cards/update_job_opening'
+    patch '/cards/update_user'
+  
+  resources :job_opening
+  
   devise_for :users
   
   get ':controller(/:action(/:id(.:format)))'

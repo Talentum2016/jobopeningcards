@@ -7,17 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if user_signed_in?%> 
+  <%=render 'templates/logged_header'%> 
+<%else%> 
+  <%=render 'templates/public_header'%>
+<%end%>
+
 
 <%= yield %>
 
+<%=render 'templates/footer'%>
+
 <%if notice%>
   <script>
-	$(document).ready(alert_notice('<%= notice %>'))
+    $(document).ready(alert_notice('<%= notice %>'))
   </script>
 <%end%>
 <%if alert%>
   <script>
-	$(document).ready(alert_error('<%= alert %>'))
+    $(document).ready(alert_error('<%= alert %>'))
   </script>
 <%end%>
 

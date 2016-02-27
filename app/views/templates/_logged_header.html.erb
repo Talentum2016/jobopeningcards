@@ -1,0 +1,9 @@
+<header>
+Bienvenido <%=current_user.email%> 
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %></br>
+	<nav>
+		<a href="/">Inicio </a> 
+		<a href="/cards/dashboard">Panel de administracion </a> 
+		<a href="/cards/user_options">Opciones de usuario </a>
+	</nav>
+</header> 

@@ -1,31 +1,21 @@
 <h2> Añadir anuncio</h2>
-	
-	<fieldset>
+<fieldset>
+  <%= form_for @job_opening , url: {action: "create"} do |f| %>
+    <%= f.label :title, 'Titulo de la oferta:' %><br/>
+    <%= f.text_field :title %><br />
+    <%= f.label :description, 'Descripción:' %><br/>
+    <%= f.text_area :description, rows: 4, cols: 50 %><br />
 
-		
-		
-	<%= form_tag({controller:"cards",action:"create"},method:"get") do%>
-	<%= label_tag(:title, "Título de la oferta:")%><br />
-	<%= text_field_tag(:title)%><br />
-	<%= label_tag(:description, "Descripción:")%><br />
-	<%= text_field_tag(:description)%><br />
-	<%= label_tag(:image, "Imagen:")%><br />
-	<%= text_field_tag(:image,"",disabled: true)%><br />
-	
-	<%= label_tag(:requirement, "Requisitos:")%><br />
-	<%= text_field_tag(:requirement)%><br />
-	<%= label_tag(:salary_min, "Salario Mínimo:")%><br />
-	<%= text_field_tag(:salary_min)%><br />
-	<%= label_tag(:salary_max, "Salario Máximo:")%><br />
-	<%= text_field_tag(:salary_max)%><br />
-	<%= label_tag(:province, "Provincia")%><br />
-	<%= text_field_tag(:province,"",disabled: true)%><br />
-	<%= label_tag(:prpfession, "Profesión")%><br />
-	<%= select_tag(:profession, grouped_options_for_select(@grouped_options), include_blank:true)%><br /><br />
+    <%= f.label :requirement, 'Requisitos:' %><br/>
+    <%= f.text_area :requirement, rows: 4, cols: 50 %><br/>
+    <%= f.label :salary_min, 'Salario Mínimo:' %><br/>
+    <%= f.number_field :salary_min, step: 1000, min: 0 %><br/>
+    <%= f.label :salary_max, 'Salario Máximo:' %><br/>
+    <%= f.number_field :salary_max, step: 1000, min: 0 %><br/>
 
-	<%= submit_tag("Crear Anuncio")%>
-	
-	
-	<% end %>
-	</fieldset>	
+    <%= f.label :profession, 'Profesión:' %><br/>
+    <%= f.select :profession, grouped_options_for_select(@grouped_options) %><br/><br/>
+    <%= f.submit 'Crear anuncio' %>
+  <%end%>	
+</fieldset>	
 	

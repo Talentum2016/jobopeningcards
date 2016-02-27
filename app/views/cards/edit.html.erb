@@ -1,26 +1,23 @@
 <h2> Modificar anuncio</h2>
 	
 	<fieldset>
-	<%= form_tag({controller:"cards",action:"update_job_opening"},method:"get") do%>
-	<%= hidden_field_tag 'id', @job_opening.id%>
-	<%= label_tag(:title, "Título de la oferta:")%><br />
-	<%= text_field_tag(:title,value=@job_opening.title)%><br />
-	<%= label_tag(:description, "Descripción:")%><br />
-	<%= text_field_tag(:description,value=@job_opening.description)%><br />
-	<%= label_tag(:image, "Imagen:")%><br />
-	<%= text_field_tag(:image,"",disabled: true)%><br />
-	<%= label_tag(:requirement, "Requisitos:")%><br />
-	<%= text_field_tag(:requirement,value=@job_opening.requirement)%><br />
-	<%= label_tag(:salary_min, "Salario Mínimo:")%><br />
-	<%= text_field_tag(:salary_min,value=@job_opening.salary_min)%><br />
-	<%= label_tag(:salary_max, "Salario Máximo:")%><br />
-	<%= text_field_tag(:salary_max,value=@job_opening.salary_max)%><br />
-	<%= label_tag(:province, "Provincia")%><br />
-	<%= text_field_tag(:province,"",disabled: true)%><br />
-	<%= label_tag(:prpfession, "Profesión")%><br />
-	<%= select_tag(:profession, grouped_options_for_select(@grouped_options,selected_key=@job_opening.profession.id))%><br /><br />
-	
-	<%= submit_tag("Modificar")%>
-	<% end %>
+  <%= form_for @job_opening , url: {action: "update_job_opening"} do |f| %>
+    <%= f.hidden_field :id%>
+    <%= f.label :title, 'Titulo de la oferta:' %><br/>
+    <%= f.text_field :title %><br />
+    <%= f.label :description, 'Descripción:' %><br/>
+    <%= f.text_area :description, rows: 4, cols: 50 %><br />
+
+    <%= f.label :requirement, 'Requisitos:' %><br/>
+    <%= f.text_area :requirement, rows: 4, cols: 50 %><br/>
+    <%= f.label :salary_min, 'Salario Mínimo:' %><br/>
+    <%= f.number_field :salary_min, step: 1000, min: 0 %><br/>
+    <%= f.label :salary_max, 'Salario Máximo:' %><br/>
+    <%= f.number_field :salary_max, step: 1000, min: 0 %><br/>
+
+    <%= f.label :profession, 'Profesión:' %><br/>
+    <%= f.select :profession, grouped_options_for_select(@grouped_options,@job_opening.profession.id) %><br/><br/>
+    <%= f.submit 'Modificar' %>
+  <%end%>		
 	</fieldset>	
 	

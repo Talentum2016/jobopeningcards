@@ -19,33 +19,13 @@ class CardsController < ApplicationController
     render :dashboard
   end
   
-  def add 
+  def add
+    @job_opening = JobOpening.new
     @grouped_options = get_professions_grouped
   end
   
   def create
-    title = params[:title]
-    description  = params[:description]
-    # image = params[:image]
-    requirement = params[:requirement]
-    salary_min = params[:salary_min]
-    salary_max = params[:salary_max]
-    profession = params[:profession]
-    # province = params[:province]
-
-    createHash = {}
-    createHash[:user_id] = current_user.id
-    createHash[:title] = title
-    createHash[:description]  = description
-    # createHash[:image] = image
-    createHash[:requirement] = requirement
-    createHash[:salary_min] = salary_min
-    createHash[:salary_max] = salary_max
-    createHash[:profession] = Profession.find profession.to_i
-    # createHash[:province] = province
-    
-   job_opening=JobOpening.create(createHash)
-    
+   @job_opening = JobOpening.create(job_opening_params)
    @job_openings=JobOpening.all
    
    render "dashboard" 
@@ -69,22 +49,14 @@ class CardsController < ApplicationController
   
   def edit
     @grouped_options = get_professions_grouped
-    id=params[:id]
-    @job_opening=JobOpening.find id   
+    @job_opening=JobOpening.find params[:id]  
   end
   
   def update_job_opening
-    id=params[:id]
-    job_opening=JobOpening.find id.to_i 
-    job_opening.title=params[:title]
-    job_opening.description=params[:description]
-    #job_opening.image=params[:image]
-    job_opening.requirement=params[:requirement]
-    job_opening.salary_min=params[:salary_min]
-    job_opening.salary_max=params[:salary_max]
-    #job_opening.province=params[:province]
-    job_opening.profession=Profession.find params[:profession].to_i
-    job_opening.save
+    update_data = job_opening_params
+    @job_opening=JobOpening.find update_data[:id]
+    @job_opening.update(update_data)
+    
     render :dashboard
   end
 
@@ -92,7 +64,7 @@ class CardsController < ApplicationController
     @user=User.find current_user.id      
   end
   
-  def update_photo
+  def update_user
     @user=User.find current_user.id
     @user.update(user_params)
     render :user_options
@@ -140,9 +112,16 @@ class CardsController < ApplicationController
     search_options.sort_by{|m|m.first.downcase}
   end
   
+  def job_opening_params
+    res = params.require(:job_opening).permit(:id,:title,:description,:requirement,
+                                              :salary_min,:salary_max,:profession)
+    res[:user] = current_user
+    res[:profession] = Profession.find res[:profession].to_i
+    res
+  end
+  
   def user_params
-    params.require(:user).permit(:image)
-    
+    params.require(:user).permit(:email,:company,:cif,:image)
   end
   
 end

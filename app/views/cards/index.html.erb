@@ -1,11 +1,3 @@
-<%if user_signed_in? %>
-	Bienvenido <%=current_user.email%> 
-	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-	<a href="/cards/dashboard">Panel de administracion</a>
-<%else%>
-	<div style="text-align: right"><%=render file:"app/views/users/sessions/new.html.erb"%></div>
-<%end%>
-
 <form action="/cards/search">
 	<input type="text" name="search_value" placeholder="Buscar..." />
 	<select name="search_category">
@@ -24,7 +16,10 @@ for job_opening in @job_openings
 			<td><h2><%=job_opening.title%></h2></td>
 		</tr>
 		<tr>
-			<td><%=job_opening.description[0..150]+"..."%></td>
+			<td><%=job_opening.created_at%></td>
+		</tr>
+		<tr>
+			<td><%=job_opening.description.truncate(150)%></td>
 		</tr>	
 		
 		<tr>
