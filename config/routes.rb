@@ -12,12 +12,10 @@ Rails.application.routes.draw do
   
   post 'cards/create'
   
-  patch '/cards/update_photo'
-  
-    patch '/cards/update_job_opening'
+    patch '/cards/update'
     patch '/cards/update_user'
   
-  resources :job_opening
+  #resources :job_opening
   
   devise_for :users
   

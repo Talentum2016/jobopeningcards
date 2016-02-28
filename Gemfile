@@ -53,3 +53,5 @@ gem "paperclip", "~> 4.3"
 gem 'bootstrap-sass'
 #special simbols for icons
 gem 'font-awesome-sass'
+#for mobile panels
+#gem 'jquery_mobile_rails'

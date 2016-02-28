@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
                     :url => "/system/:attachment/:id/:basename_:style.:extension"
   validates_attachment :image,
                      content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
-  
-   validates_presence_of :company, :cif
+  validates_attachment_size :image, less_than: 1.megabytes
+  validates_presence_of :company, :cif
 end

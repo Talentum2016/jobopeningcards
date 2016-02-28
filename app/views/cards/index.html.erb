@@ -1,10 +1,10 @@
 <%= form_tag({controller: "cards", action: "search"}, method: "get") do%>
-    <%= search_field_tag(:search_value, '', placeholder: 'Buscar...') %> 
-	<%= select_tag(:search_category, options_for_select(@search_options))%>
-	<%= submit_tag ('Buscar')%>
+  <%= search_field_tag(:search_text, '', placeholder: 'Buscar...') %> 
+  <%= select_tag(:search_category, options_for_select(@search_options))%>
+  <%= submit_tag ('Buscar')%>
 <%end%>
 <% 
-for job_opening in @job_openings
+  @job_openings.each do |job_opening|
 %>
 <div style="border-style: solid;margin: 5px">
 	<table>
@@ -12,7 +12,7 @@ for job_opening in @job_openings
 			<td><h2><%=job_opening.title%></h2></td>
 		</tr>
 		<tr>
-			<td><%=job_opening.created_at%></td>
+			<td><%=job_opening.created_at.strftime("%d-%m-%Y")%></td>
 		</tr>
 		<tr>
 			<td><%=job_opening.description.truncate(150)%></td>
@@ -24,5 +24,7 @@ for job_opening in @job_openings
 	
 	</table>
 </div>
-
+<%end%>
+<%if JobOpening.count > @jobs_limit%>
+	<%=link_to 'Mas...',"/cards/more?limit=" + @jobs_limit.to_s %>
 <%end%>

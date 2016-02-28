@@ -3,26 +3,34 @@
 
 <div style="border-style: solid;margin: 5px">
 	<table>
+		<%= image_tag @job_opening.user.image.url, size: "100x100" %><br /> <br />
+		<%= image_tag @job_opening.image_job.url, size: "320x200" %><br /> <br />
 		<tr>
-			<td>TITULO DE LA OFERTA:<%=@job_opening.title%></td>
+			<td>TITULO DE LA OFERTA: <%=@job_opening.title%></td>
 		</tr>
 		<tr>
-			<td>CATEGORIA:<%=@job_opening.profession.category.title%></td>
+			<td>FECHA: <%=@job_opening.created_at.strftime("%d-%m-%Y")%></td>
 		</tr>
 		<tr>
-			<td>PROFESION:<%=@job_opening.profession.title%></td>
+			<td>CATEGORIA: <%=@job_opening.profession.category.title%></td>
 		</tr>
 		<tr>
-			<td>DESCRIPCION:<%=@job_opening.description%></td>
+			<td>PROFESION: <%=@job_opening.profession.title%></td>
+		</tr>
+		<tr>
+			<td>DESCRIPCION: <%=@job_opening.description%></td>
 		</tr>	
 		<tr>
-			<td>REQUISITOS:<%=@job_opening.requirement%></td>
+			<td>REQUISITOS: <%=@job_opening.requirement%></td>
 		</tr>
 		<tr>
-			<td>FRANJA SALARIAL:<%=@job_opening.salary_min%>-<%=@job_opening.salary_max%></td>
+			<td>FRANJA SALARIAL: <%=@job_opening.salary_min%>-<%=@job_opening.salary_max%></td>
 		</tr>
 		<tr>
-			<td>TIPO DE CONTRATO:<%=@job_opening.contract%></td>
+			<td>TIPO DE CONTRATO: <%=@job_opening.contract%></td>
+		</tr>
+		<tr>
+			<td>PROVINCIA: <%=@job_opening.province%></td>
 		</tr>
 	</table>
 

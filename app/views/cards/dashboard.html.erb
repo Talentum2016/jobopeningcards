@@ -10,12 +10,11 @@
       <th>Puesto de trabajo</th>				
     </tr>
 
-  <% @job_openings = JobOpening.all
-    for job_opening in current_user.job_openings%>
+  <%current_user.job_openings.each do |job_opening|%>
     <tr>
       <td><%=job_opening.title%></td>
-      <td><%=job_opening.description%></td>
-      <td><%=job_opening.requirement%></td> 
+      <td><%=job_opening.description.truncate(120)%></td>
+      <td><%=job_opening.requirement.truncate(120)%></td> 
       <td><%=job_opening.salary_min%> </td> 
       <td><%=job_opening.salary_max%></td> 
       <td><%=job_opening.profession.title%></td> 

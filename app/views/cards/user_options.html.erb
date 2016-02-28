@@ -12,7 +12,7 @@
   <%= f.text_field(:cif)%> <%= @user.errors[:cif].first %><br />
   <%= f.label(:image, "Logo empresa:")%><br />
   <%= f.file_field :image %><br />
-  <%= image_tag @user.image.url %><br /> <br />  
+  <%= image_tag @user.image.url, size: "100x100" %><br /> <br />  
 	
   <%= f.submit 'Modificar' %><br /><br /> 
 <% end %>

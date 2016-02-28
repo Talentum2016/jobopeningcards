@@ -1,3 +1,16 @@
-<header> style="text-align: right">
+<header>
+  <div style="text-align: right">
+    <button id="login_button">Acceder</button>
+  </div>
+  <a href="/">Inicio </a>
+  <div id="login_panel" style="text-align: right; display: none">
 	<%=render file:"app/views/users/sessions/new.html.erb"%>
+  </div>
 </header>
+<script>
+  $(document).ready(function(){
+    $("#login_button").click(function(){
+      $("#login_panel").toggle("slow");
+    });
+  });
+</script>
