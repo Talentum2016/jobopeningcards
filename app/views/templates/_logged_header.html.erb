@@ -1,7 +1,7 @@
 <header>
   <div style="text-align: right">
     Bienvenido <%=current_user.email%>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %></br>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %></br>
   </div>
 
   <nav>
