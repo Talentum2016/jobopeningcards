@@ -35,10 +35,10 @@
 	</table>
 
 </div>
-<a href="/cards/index">Volver</a><br />
+<a href="/public/">Volver</a><br />
 
 
 <%if user_signed_in? && current_user.id==@job_opening.user_id %> 
-	<a href="/cards/edit?id=<%=@job_opening.id%>">Editar</a>
+	<a href="/admin/<%=@job_opening.id%>/edit">Editar</a>
 <%end%>
 	

@@ -1,4 +1,4 @@
-<%= form_tag({controller: "cards", action: "search"}, method: "get") do%>
+<%= form_tag({controller: "public", action: "search"}, method: "get") do%>
   <%= search_field_tag(:search_text, '', placeholder: 'Buscar...') %> 
   <%= select_tag(:search_category, options_for_select(@search_options))%>
   <%= submit_tag ('Buscar')%>
@@ -19,12 +19,12 @@
 		</tr>	
 		
 		<tr>
-			<td><a href="/cards/show?id=<%=job_opening.id%>">Detalle</a></td>
+			<td><a href="/public/<%=job_opening.id%>">Detalle</a></td>
 		</tr>
 	
 	</table>
 </div>
 <%end%>
-<%if JobOpening.count > @jobs_limit%>
-	<%=link_to 'Mas...',"/cards/more?limit=" + @jobs_limit.to_s %>
+<%if JobOpening.count > @jobs_limit && !params[:commit]%>
+	<%=link_to 'Mas...',"/public/more?limit=" + @jobs_limit.to_s %>
 <%end%>

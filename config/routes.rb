@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
-  
-  get 'cards/index'
 
-  get 'cards/show'
+  get 'admin/dashboard'
+  
+  get 'admin/user_options'
+  
+  post 'admin/update_user'
+  
+  resources :admin, only: [:new,:edit,:create,:update,:destroy]
+
+  get 'public/search'
+  
+  get 'public/more'
+    
+  resources :public, only: [:index,:show]
+  
+
 
   get 'cards/add'
   
@@ -15,13 +27,12 @@ Rails.application.routes.draw do
     patch '/cards/update'
     patch '/cards/update_user'
   
-  #resources :job_opening
   
   devise_for :users
   
-  get ':controller(/:action(/:id(.:format)))'
+  #get ':controller(/:action(/:id(.:format)))'
   
-  root to: "cards#index"
+  root to: "public#index"
   
   
   # The priority is based upon order of creation: first created -> highest priority.
