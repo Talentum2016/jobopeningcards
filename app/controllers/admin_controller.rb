@@ -34,28 +34,6 @@ class AdminController < ApplicationController
     JobOpening.delete params[:id].to_i
     render :dashboard
   end
-  
-  def user_options
-    @user=User.find current_user.id      
-  end
-  
-  def update_user
-    @user=User.find current_user.id
-    @user.update(user_params)
-    render :user_options
-  end
-#methods will be deleted
-  def photos_category
-    @profession=Profession.new
-    @grouped_options = JobOpening.get_professions_grouped_for_select
-  end
-  def upload_photos_category
-    parameters = params.require(:profession).permit(:id,:image_prof)
-    @profession=Profession.find parameters[:id].to_i
-    @grouped_options = JobOpening.get_professions_grouped_for_select
-    @profession.update(parameters)
-    render :photos_category
-  end
 
   private
 
@@ -67,10 +45,6 @@ class AdminController < ApplicationController
     res[:user] = current_user
     res[:profession] = Profession.find res[:profession].to_i
     res
-  end
-  
-  def user_params
-    params.require(:user).permit(:email,:company,:cif,:image)
   end
   
 # Prepare views

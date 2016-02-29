@@ -2,13 +2,9 @@ Rails.application.routes.draw do
 
   get 'admin/dashboard'
   
-  get 'admin/user_options'
+  get 'users/user_options'
   
-  post 'admin/update_user'
-  
-  #delete this routes
-  get 'admin/photos_category'
-  post 'admin/upload_photos_category'
+  post 'users/update_user'
   
   resources :admin, only: [:new,:edit,:create,:update,:destroy]
 

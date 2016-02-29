@@ -1,4 +1,4 @@
-class CreateJobOpenings < ActiveRecord::Migration
+class CreateJobopenings < ActiveRecord::Migration
   def change
     create_table :job_openings do |t|
       t.string :title

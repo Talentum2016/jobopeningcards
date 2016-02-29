@@ -19,21 +19,22 @@ ActiveRecord::Schema.define(version: 20160224105904) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "jobo_penings", force: :cascade do |t|
+  create_table "job_openings", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
+    t.string   "image_job_file_name"
+    t.string   "image_job_content_type"
+    t.integer  "image_job_file_size"
+    t.datetime "image_job_updated_at"
     t.string   "requirement"
     t.integer  "salary_min"
     t.integer  "salary_max"
     t.string   "contract"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.string   "province"
     t.integer  "user_id"
     t.integer  "profession_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "job_openings", ["profession_id"], name: "index_job_openings_on_profession_id"
@@ -41,13 +42,13 @@ ActiveRecord::Schema.define(version: 20160224105904) do
 
   create_table "professions", force: :cascade do |t|
     t.string   "title"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.string   "image_prof_file_name"
+    t.string   "image_prof_content_type"
+    t.integer  "image_prof_file_size"
+    t.datetime "image_prof_updated_at"
     t.integer  "category_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "professions", ["category_id"], name: "index_professions_on_category_id"
