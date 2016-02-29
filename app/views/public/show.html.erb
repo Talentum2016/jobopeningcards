@@ -4,7 +4,12 @@
 <div style="border-style: solid;margin: 5px">
 	<table>
 		<%= image_tag @job_opening.user.image.url, size: "100x100" %><br /> <br />
-		<%= image_tag @job_opening.image_job.url, size: "320x200" %><br /> <br />
+		
+		<%if @job_opening.image_job_file_name%>
+			<%= image_tag @job_opening.image_job.url, size: "320x200" %><br /> <br />
+		<%else%>
+			<%= image_tag @job_opening.profession.image_prof.url, size: "320x200" %><br /> <br />
+		<%end%>
 		<tr>
 			<td>TITULO DE LA OFERTA: <%=@job_opening.title%></td>
 		</tr>

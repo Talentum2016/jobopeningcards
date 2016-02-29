@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   
   post 'admin/update_user'
   
+  #delete this routes
+  get 'admin/photos_category'
+  post 'admin/upload_photos_category'
+  
   resources :admin, only: [:new,:edit,:create,:update,:destroy]
 
   get 'public/search'
@@ -13,20 +17,6 @@ Rails.application.routes.draw do
   get 'public/more'
     
   resources :public, only: [:index,:show]
-  
-
-
-  get 'cards/add'
-  
-  get 'cards/dashboard'
-
-  get 'cards/panel'
-  
-  post 'cards/create'
-  
-    patch '/cards/update'
-    patch '/cards/update_user'
-  
   
   devise_for :users
   

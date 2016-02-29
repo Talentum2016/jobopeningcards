@@ -44,6 +44,18 @@ class AdminController < ApplicationController
     @user.update(user_params)
     render :user_options
   end
+#methods will be deleted
+  def photos_category
+    @profession=Profession.new
+    @grouped_options = JobOpening.get_professions_grouped_for_select
+  end
+  def upload_photos_category
+    parameters = params.require(:profession).permit(:id,:image_prof)
+    @profession=Profession.find parameters[:id].to_i
+    @grouped_options = JobOpening.get_professions_grouped_for_select
+    @profession.update(parameters)
+    render :photos_category
+  end
 
   private
 

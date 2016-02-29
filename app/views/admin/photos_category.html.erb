@@ -1,0 +1,7 @@
+  <%= form_for @profession , url: "/admin/upload_photos_category", method: :post do |f| %>
+    <%= f.label :id, 'Profesión:' %><br/>
+    <%= f.select :id, grouped_options_for_select(@grouped_options) %><br/><br/>
+    <%= f.label(:image_prof, "Imagen profesion:")%><br />
+  	<%= f.file_field :image_prof %><br />
+    <%= f.submit 'Modificar' %><br /><br />
+  <%end%>
