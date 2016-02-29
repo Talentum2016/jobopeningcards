@@ -55,3 +55,6 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 #for mobile panels
 #gem 'jquery_mobile_rails'
+#Meassure coverage of code
+gem 'simplecov'
+

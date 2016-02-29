@@ -7,7 +7,7 @@ class PublicControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show
+    get :show, id: 666
     assert_response :success
   end
 

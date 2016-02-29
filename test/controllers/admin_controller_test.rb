@@ -1,19 +1,19 @@
 require 'test_helper'
 
 class AdminControllerTest < ActionController::TestCase
-  test "should get add" do
-    get :add
-    assert_response :success
+  test "should redirect when get new and not autenticate" do
+    get :new
+    assert_response :redirect
   end
 
-  test "should get edit" do
-    get :edit
-    assert_response :success
+  test "should redirect when get edit and not autenticate" do
+    get :edit, id: 666
+    assert_response :redirect
   end
 
-  test "should get dashboard" do
+  test "should redirect when get dashboard and not autenticate" do
     get :dashboard
-    assert_response :success
+    assert_response :redirect
   end
 
 end

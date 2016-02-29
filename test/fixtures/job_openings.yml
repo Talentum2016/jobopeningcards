@@ -1,8 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 666
   title: MyString
   description: MyString 
+  user_id: 666
+  profession_id: 666
 
 two:
   title: MyString
