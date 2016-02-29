@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'users/user_options'
+
+  post 'users/update_user'
+
   get 'admin/dashboard'
   
   get 'admin/user_options'

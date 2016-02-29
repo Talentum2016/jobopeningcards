@@ -2,7 +2,7 @@
 	
 	<fieldset>
   <%= form_for @job_opening , url: {action: "update"} do |f| %>
-    <%= f.hidden_field :id%>
+    <%= f.hidden_field :id %>
     <%= f.label :title, 'Titulo de la oferta:' %><br/>
     <%= f.text_field :title %> <%= @job_opening.errors[:title].first %><br />
     <%= f.label :description, 'Descripción:' %><br/>
@@ -19,12 +19,12 @@
 	<%= f.select :contract, options_for_select(@contract_options) %><br/>
     <%= f.label :profession, 'Profesión:' %><br/>
     <%= f.select :profession, grouped_options_for_select(@grouped_options,@job_opening.profession.id) %><br/><br/>
-    <%= f.label(:image_job, "Imagen empleo:")%><br />
+    <%= f.label(:image_job, "Imagen empleo:") %><br />
   	<%= f.file_field :image_job %><br />
-  	<%if @job_opening.image_job.url%>
+  	<%if @job_opening.image_job.url %>
   		<%= image_tag @job_opening.image_job.url, size: "320x200" %><br /> <br />
-    <%end%>
+    <% end %>
     <%= f.submit 'Modificar' %><br /><br />
-  <%end%>		
+  <% end %>		
 	</fieldset>	
 	

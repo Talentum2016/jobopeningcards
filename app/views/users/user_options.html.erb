@@ -6,11 +6,11 @@
 
   <%= f.label :email, 'Email:' %><br/>
   <%= f.email_field :email %> <%= @user.errors[:email].first %><br />
-  <%= f.label(:company, 'Empresa:')%><br />
-  <%= f.text_field(:company)%> <%= @user.errors[:company].first %><br />
-  <%= f.label(:cif, 'CIF:')%><br />
-  <%= f.text_field(:cif)%> <%= @user.errors[:cif].first %><br />
-  <%= f.label(:image, "Logo empresa:")%><br />
+  <%= f.label(:company, 'Empresa:') %><br />
+  <%= f.text_field(:company) %> <%= @user.errors[:company].first %><br />
+  <%= f.label(:cif, 'CIF:') %><br />
+  <%= f.text_field(:cif) %><%= @user.errors[:cif].first %><br />
+  <%= f.label(:image, "Logo empresa:") %><br />
   <%= f.file_field :image %><br />
   <%= image_tag @user.image.url, size: "100x100" %><br /> <br />  
 	

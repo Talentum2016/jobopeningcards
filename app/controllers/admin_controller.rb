@@ -17,12 +17,12 @@ class AdminController < ApplicationController
   end
   
   def edit
-    @job_opening=JobOpening.find params[:id]
+    @job_opening = JobOpening.find params[:id]
   end
   
   def update
     update_data = job_opening_params
-    @job_opening=JobOpening.find update_data[:id]
+    @job_opening = JobOpening.find update_data[:id]
     if @job_opening.update(update_data)
       render :dashboard
     else
@@ -35,23 +35,14 @@ class AdminController < ApplicationController
     render :dashboard
   end
   
-  def user_options
-    @user=User.find current_user.id      
-  end
-  
-  def update_user
-    @user=User.find current_user.id
-    @user.update(user_params)
-    render :user_options
-  end
 #methods will be deleted
   def photos_category
-    @profession=Profession.new
+    @profession = Profession.new
     @grouped_options = JobOpening.get_professions_grouped_for_select
   end
   def upload_photos_category
     parameters = params.require(:profession).permit(:id,:image_prof)
-    @profession=Profession.find parameters[:id].to_i
+    @profession = Profession.find parameters[:id].to_i
     @grouped_options = JobOpening.get_professions_grouped_for_select
     @profession.update(parameters)
     render :photos_category
@@ -68,16 +59,12 @@ class AdminController < ApplicationController
     res[:profession] = Profession.find res[:profession].to_i
     res
   end
-  
-  def user_params
-    params.require(:user).permit(:email,:company,:cif,:image)
-  end
-  
+    
 # Prepare views
 
   def load_options
-      @grouped_options = JobOpening.get_professions_grouped_for_select
-      @contract_options = JobOpening.get_contracts_for_select
-      @province_options = JobOpening.get_province_for_select
+    @grouped_options = JobOpening.get_professions_grouped_for_select
+    @contract_options = JobOpening.get_contracts_for_select
+    @province_options = JobOpening.get_province_for_select
   end
 end
