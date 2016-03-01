@@ -1,11 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Starter Template (3.0)</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	</head>
 <header>
-  <div style="text-align: right">
-    <button id="login_button">Acceder</button>
-  </div>
-  <a href="/">Inicio </a>
-  <div id="login_panel" style="text-align: right; display: none">
-	<%=render file:"app/views/users/sessions/new.html.erb"%>
-  </div>
 </header>
 <script>
   $(document).ready(function(){
@@ -14,3 +17,42 @@
     });
   });
 </script>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+  <div style="text-align: right">
+    <button id="login_button"  style=" ">Acceder</button>
+  </div>
+  <div id="login_panel" >
+	<%=render file:"app/views/users/sessions/new.html.erb"%>
+  </div>
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      	<a class="navbar-brand" href="/"> <img src="/images/logo.png" /></a>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" width="150px" height="25px" /></a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Inicio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#login_button" >Login</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<div class="container">
+  
+
+</div><!-- /.container -->
+	<!-- script references -->
+
+	</body>
+</html>
