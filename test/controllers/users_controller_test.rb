@@ -10,7 +10,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test "should post update_user when autenticate" do
     sign_in users(:one)
-    patch :update_user, user: {id: 666, email: "xxx@xx.xx", cif: "44444444F", company:"Example"}
+    patch :update_user, user: {email: "xxx@xx.xx", cif: "44444444F", company:"Example"}
     assert_response :success
   end
   
