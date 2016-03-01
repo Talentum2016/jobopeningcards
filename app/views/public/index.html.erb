@@ -1,3 +1,4 @@
+<div id="reload_list">
 <%= form_tag({controller: "public", action: "search"}, method: "get") do%>
   <%= search_field_tag(:search_text, '', placeholder: 'Buscar...') %> 
   <%= select_tag(:search_category, options_for_select(@search_options))%>
@@ -26,6 +27,14 @@
 </div>
 <%end%>
 <%if JobOpening.count > @jobs_limit && !params[:commit]%>
-	<%=link_to 'Mas...',"/public/more?limit=" + @jobs_limit.to_s %>
+	<%=link_to 'Mas...',"#", remote: true, id:'more_link' %>
 <%end%>
 
+<script>
+$(document).ready(function(){
+    $("#more_link").click(function(){
+        $("body").load("/public/more?limit=" + <%=@jobs_limit%>);
+    });
+});
+</script>
+</div>

@@ -1,4 +1,5 @@
 class PublicController < ApplicationController
+  respond_to :html, :js
   def index
     @jobs_limit = 10
     load_index_options
@@ -20,7 +21,7 @@ class PublicController < ApplicationController
   def more
     @jobs_limit = params[:limit].to_i + 10
     load_index_options
-    render :index  
+    render :index
   end
   
   private
