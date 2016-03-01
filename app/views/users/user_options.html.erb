@@ -2,7 +2,7 @@
 
 <h2>DATOS DE LA EMPRESA</h2>
 
-<%= form_for @user , url: {action: "update_user"}, method: :post do |f| %>
+<%= form_for @user , url: {action: "update_user"}, method: :patch do |f| %>
 
   <%= f.label :email, 'Email:' %><br/>
   <%= f.email_field :email %> <%= @user.errors[:email].first %><br />

@@ -7,7 +7,7 @@ class JobOpening < ActiveRecord::Base
   validates_attachment :image_job,
                      content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
   validates_attachment_size :image_job, less_than: 2.megabytes                   
-  validates_presence_of :title, :description
+  validates_presence_of :title, :description, :requirement
   
   
   def self.get_professions_grouped_for_select

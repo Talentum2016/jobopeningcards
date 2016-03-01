@@ -28,3 +28,4 @@
 <%if JobOpening.count > @jobs_limit && !params[:commit]%>
 	<%=link_to 'Mas...',"/public/more?limit=" + @jobs_limit.to_s %>
 <%end%>
+

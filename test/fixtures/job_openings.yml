@@ -4,6 +4,7 @@ one:
   id: 666
   title: MyString
   description: MyString 
+  requirement: MyString 
   user_id: 666
   profession_id: 666
 

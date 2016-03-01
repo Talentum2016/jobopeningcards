@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   get 'users/user_options'
   
-  post 'users/update_user'
+  patch 'users/update_user'
   
   resources :admin, only: [:new,:edit,:create,:update,:destroy]
 
