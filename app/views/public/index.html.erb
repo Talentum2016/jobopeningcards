@@ -1,20 +1,26 @@
 <div id="reload_list" class="container">
-<%= form_tag({controller: "public", action: "search"}, method: "get", class:"form-group") do%>
+<%= form_tag({controller: "public", action: "search"}, method: "get", class:"form-group", style:"text-align:center") do%>
   <div class="col-xs-3">
   	<%= search_field_tag(:search_text, '', placeholder: 'Buscar...',class:"form-control col-sm") %>
   </div>
   <div class="col-xs-3"> 
   	<%= select_tag(:search_category, options_for_select(@search_options), class: "form-control col-sm")%>
   </div>
-  <%= submit_tag ('Buscar'), class:"btn btn-default"%>
+  <div >
+  	<%= submit_tag ('Buscar'), class:"btn btn-default"%>
+  </div>
 <%end%>
 <% 
   @job_openings.each do |job_opening|
 %>
-<div style="border-style: solid;margin: 5px">
+<div class="panel-custom col-md-12">
+	<div class="col-md-2" style="margin-top: 10px; margin-bottom: 10px">
+		<%= image_tag job_opening.user.image.url, size: "100x100" %>
+	</div>
+	<div class="col-md-10">
 	<table>
 		<tr>
-			<td><h2><%=job_opening.title%></h2></td>
+			<td><h2 style="margin-top: 5px"><%=job_opening.title%></h2></td>
 		</tr>
 		<tr>
 			<td><%=job_opening.created_at.strftime("%d-%m-%Y")%></td>
@@ -28,11 +34,14 @@
 		</tr>
 	
 	</table>
+	</div>
 </div>
 <%end%>
-<%if JobOpening.count > @jobs_limit && !params[:commit]%>
-	<%=link_to 'Mas...',"#", remote: true, id:'more_link' %>
-<%end%>
+<div class="col-md-12 center-block">
+	<%if JobOpening.count > @jobs_limit && !params[:commit]%>
+		<%=link_to 'Mas...',"#", remote: true, id:'more_link', class:"center-block", style:"text-align:center" %>
+	<%end%>
+</div>
 
 <script>
 $(document).ready(function(){

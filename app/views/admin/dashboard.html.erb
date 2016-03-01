@@ -1,5 +1,6 @@
-<a href="/admin/new">Añadir nueva oferta</a>   
-<table>
+<div class="container">
+<a href="/admin/new" class="btn btn-default" style ="margin-bottom: 10px"><span class="glyphicon glyphicon-plus"> </span> Añadir nueva oferta</a>   
+<table class='table table-striped' >
   <tr>
     <th>Título de la Oferta</th>
       <th>Descripción</th>
@@ -15,12 +16,13 @@
       <td><%=job_opening.title%></td>
       <td><%=job_opening.description.truncate(120)%></td>
       <td><%=job_opening.requirement.truncate(120)%></td> 
-      <td><%=job_opening.salary_min%> </td> 
+      <td><%=job_opening.salary_min%>&nbsp;</td> 
       <td><%=job_opening.salary_max%></td> 
       <td><%=job_opening.profession.title%></td> 
       <td><%=link_to("Borrar","/admin/" + job_opening.id.to_s, method: :delete,
-                                    data:{confirm: '¿Seguro que quieres borrar?'})%></td>	
+                                    data:{confirm: '¿Seguro que quieres borrar?'})%>&nbsp;</td>	
       <td><a href="/admin/<%=job_opening.id%>/edit">Editar</a></td>					
     </tr>
   <% end%>		
 </table>
+</div>

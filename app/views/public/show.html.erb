@@ -1,49 +1,56 @@
+<div class="container">
+<h2 style = "text-align:center">DETALLE DE LA OFERTA</h2>
 
-<p>DETALLE DE LA OFERTA</p>
-
-<div style="border-style: solid;margin: 5px">
-	<table>
+<div class="panel-custom">
+	<div class="col-md-2" style="margin-top: 10px; margin-bottom: 10px">
 		<%= image_tag @job_opening.user.image.url, size: "100x100" %><br /> <br />
-		
-		<%if @job_opening.image_job_file_name%>
-			<%= image_tag @job_opening.image_job.url, size: "320x200" %><br /> <br />
-		<%else%>
-			<%= image_tag @job_opening.profession.image_prof.url, size: "320x200" %><br /> <br />
-		<%end%>
+	</div>
+	<div class="col-md-10">
+	<table style="margin-top: 10px;margin-bottom: 5px">
+
 		<tr>
-			<td>TITULO DE LA OFERTA: <%=@job_opening.title%></td>
+			<td><strong>TITULO DE LA OFERTA:</strong> <%=@job_opening.title%></td>
 		</tr>
 		<tr>
-			<td>FECHA: <%=@job_opening.created_at.strftime("%d-%m-%Y")%></td>
+			<td><strong>FECHA:</strong> <%=@job_opening.created_at.strftime("%d-%m-%Y")%></td>
 		</tr>
 		<tr>
-			<td>CATEGORIA: <%=@job_opening.profession.category.title%></td>
+			<td><strong>CATEGORIA:</strong> <%=@job_opening.profession.category.title%></td>
 		</tr>
 		<tr>
-			<td>PROFESION: <%=@job_opening.profession.title%></td>
+			<td><strong>PROFESION:</strong> <%=@job_opening.profession.title%></td>
 		</tr>
 		<tr>
-			<td>DESCRIPCION: <%=@job_opening.description%></td>
+			<td><strong>DESCRIPCION:</strong> <%=@job_opening.description%></td>
 		</tr>	
 		<tr>
-			<td>REQUISITOS: <%=@job_opening.requirement%></td>
+			<td><strong>REQUISITOS:</strong> <%=@job_opening.requirement%></td>
 		</tr>
 		<tr>
-			<td>FRANJA SALARIAL: <%=@job_opening.salary_min%>-<%=@job_opening.salary_max%></td>
+			<td><strong>FRANJA SALARIAL:</strong> <%=@job_opening.salary_min%>-<%=@job_opening.salary_max%></td>
 		</tr>
 		<tr>
-			<td>TIPO DE CONTRATO: <%=@job_opening.contract%></td>
+			<td><strong>TIPO DE CONTRATO:</strong> <%=@job_opening.contract%></td>
 		</tr>
 		<tr>
-			<td>PROVINCIA: <%=@job_opening.province%></td>
+			<td><strong>PROVINCIA:</strong> <%=@job_opening.province%></td>
 		</tr>
 	</table>
+	</div>
+	<div class="center-block">
+		<%if @job_opening.image_job_file_name%>
+			<%= image_tag @job_opening.image_job.url, size: "320x200", class: "center-block", style: "text-align:center" %><br /> <br />
+		<%else%>
+			<%= image_tag @job_opening.profession.image_prof.url, size: "320x200", class: "center-block", style: "text-align:center" %><br /> <br />
+		<%end%>
+	</div>
 
 </div>
-<a href="/public/">Volver</a><br />
+<div class="col-md-12 center-block">
+<a href="/public/", class = "center-block", style = "text-align:center">Volver</a><br />
 
-
-<%if user_signed_in? && current_user.id==@job_opening.user_id %> 
-	<a href="/admin/<%=@job_opening.id%>/edit">Editar</a>
-<%end%>
-	
+	<%if user_signed_in? && current_user.id==@job_opening.user_id %> 
+		<a href="/admin/<%=@job_opening.id%>/edit" , class = "center-block", style = "text-align:center">Editar</a>
+	<%end%>
+</div>
+</div>	
