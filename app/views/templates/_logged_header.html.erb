@@ -1,12 +1,36 @@
 <header>
-  <div style="text-align: right">
-    Bienvenido <%=current_user.email%>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %></br>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+  <div id="wellcome_text">
+        Bienvenido <%=current_user.email%></br>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
   </div>
 
-  <nav>
-    <a href="/">Inicio </a> 
-    <a href="/admin/dashboard">Administrar ofertas </a> 
-    <a href="/users/user_options">Opciones de usuario </a>
-  </nav>
-</header> 
+    <div class="navbar-header">
+      <button id="button_colapsed" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" width="150px" height="25px" /></a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/admin/dashboard">Administrar ofertas</a></li>
+        <li><a href="/users/user_options">Opciones de usuario</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+</header>
+
+<script>
+  $(document).ready(function () {
+        var url = window.location;
+        $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+        $('ul.nav a').filter(function() {
+             return this.href == url;
+        }).parent().addClass('active');
+    });
+</script>

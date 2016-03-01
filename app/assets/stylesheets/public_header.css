@@ -1,18 +1,28 @@
 
 #login_panel {
-    background: #BBBBBB;
+    background: #EEEEEE;
     position: absolute;
     right: 30px;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    top: 51px;
+    top: 54px;
     display: none;
+    z-index: 2000;
+    border: 2px solid;
+    border-radius: 10px;
+    
 }
 
 #login_button{
 	position: absolute;
-    top: 12px;
+    top: 8px;
     right: 30px;
     z-index: 1031;
+}
+
+#button_colapsed{
+	position: absolute;
+    left: 48%;
+    z-index: 1500
 }

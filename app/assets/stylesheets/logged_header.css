@@ -1,0 +1,14 @@
+#wellcome_text{
+	position:absolute; 
+	right:10px; 
+	top:5px; 
+	color:#999999; 
+	fixed; 
+	text-align: right"
+}
+
+#button_colapsed{
+	position: absolute;
+    left: 48%;
+    z-index: 1500
+}
