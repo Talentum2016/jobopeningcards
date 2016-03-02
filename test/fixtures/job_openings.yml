@@ -9,5 +9,9 @@ one:
   profession_id: 666
 
 two:
+  id: 777
   title: MyString
   description: MyString 
+  requirement: MyString 
+  user_id: 666
+  profession_id: 666

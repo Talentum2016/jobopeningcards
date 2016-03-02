@@ -1,4 +1,3 @@
-<div class="container">
 <h2 style = "text-align:center">DETALLE DE LA OFERTA</h2>
 
 <div class="panel-custom">
@@ -52,5 +51,4 @@
 	<%if user_signed_in? && current_user.id==@job_opening.user_id %> 
 		<a href="/admin/<%=@job_opening.id%>/edit" , class = "center-block", style = "text-align:center">Editar</a>
 	<%end%>
-</div>
 </div>	
