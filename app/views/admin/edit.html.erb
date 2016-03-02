@@ -8,7 +8,7 @@
     <%= f.label :description, 'Descripción:' %><br/>
     <%= f.text_area :description, rows: 4, cols: 50 %> <%= @job_opening.errors[:description].first %><br />
 	<%= f.label :province, 'Provincia:' %><br/>
-	<%= f.select :province, options_for_select(@province_options), include_blank: true  %><br/>
+	<%= f.select :province, options_for_select(@province_options,@job_opening.province), include_blank: true  %><br/>
     <%= f.label :requirement, 'Requisitos:' %> <%= @job_opening.errors[:requirement].first %><br/>
     <%= f.text_area :requirement, rows: 4, cols: 50 %><br/>
     <%= f.label :salary_min, 'Salario Mínimo:' %><br/>
@@ -16,7 +16,7 @@
     <%= f.label :salary_max, 'Salario Máximo:' %><br/>
     <%= f.number_field :salary_max, step: 1000, min: 0 %><br/>
 	<%= f.label :contract, 'Tipo de contrato:' %><br/>
-	<%= f.select :contract, options_for_select(@contract_options) %><br/>
+	<%= f.select :contract, options_for_select(@contract_options,@job_opening.contract) %><br/>
     <%= f.label :profession, 'Profesión:' %><br/>
     <%= f.select :profession, grouped_options_for_select(@grouped_options,@job_opening.profession.id) %><br/><br/>
     <%= f.label(:image_job, "Imagen empleo:")%><br />
