@@ -15,11 +15,11 @@
       <td><%=job_opening.title%></td>
       <td><%=job_opening.description.truncate(120)%></td>
       <td><%=job_opening.requirement.truncate(120)%></td> 
-      <td><%=job_opening.salary_min%>&nbsp;</td> 
+      <td><%=job_opening.salary_min%></td> 
       <td><%=job_opening.salary_max%></td> 
       <td><%=job_opening.profession.title%></td> 
       <td><%=link_to("Borrar","/admin/" + job_opening.id.to_s, method: :delete,
-                                    data:{confirm: '¿Seguro que quieres borrar?'})%>&nbsp;</td>	
+                                    data:{confirm: '¿Seguro que quieres borrar?'})%></td>	
       <td><a href="/admin/<%=job_opening.id%>/edit">Editar</a></td>					
     </tr>
   <% end%>		

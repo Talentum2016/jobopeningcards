@@ -46,9 +46,9 @@
 
 </div>
 <div class="col-md-12 center-block">
-<a href="/public/", class = "center-block", style = "text-align:center">Volver</a><br />
+<h3><a href="/public/", class = "center-block", style = "text-align:center">Volver</a></h3><br />
 
 	<%if user_signed_in? && current_user.id==@job_opening.user_id %> 
-		<a href="/admin/<%=@job_opening.id%>/edit" , class = "center-block", style = "text-align:center">Editar</a>
+		<h3><a href="/admin/<%=@job_opening.id%>/edit" , class = "center-block", style = "text-align:center">Editar</a></h3>
 	<%end%>
 </div>	

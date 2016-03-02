@@ -38,7 +38,7 @@
 <%end%>
 <div class="col-md-12 center-block">
 	<%if JobOpening.count > @jobs_limit && !params[:commit]%>
-		<%=link_to 'Mas...',"#", remote: true, id:'more_link', class:"center-block", style:"text-align:center" %>
+		<h3><%=link_to 'Mas...',"#", remote: true, id:'more_link', class:"center-block", style:"text-align:center" %></h3>
 	<%end%>
 </div>
 

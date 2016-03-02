@@ -57,4 +57,6 @@ gem 'font-awesome-sass'
 #gem 'jquery_mobile_rails'
 #Meassure coverage of code
 gem 'simplecov'
-
+#integration test
+gem 'capybara'
+gem 'launchy'
