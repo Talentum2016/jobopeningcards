@@ -3,25 +3,25 @@ Final Practicum RoR at Talentum Empleo
 
 # Configuration for development and test enviroments.
 
-* Prerequisites: 
-⋅⋅* Git
-⋅⋅* Ruby 2.2.3 
-⋅⋅* Rails 4.2.6
-⋅⋅* Bundler 1.11  
+Prerequisites: 
+* Git
+* Ruby 2.2.3 
+* Rails 4.2.6
+* Bundler 1.11  
 
-* Main gems added to Gemfile: 
-⋅⋅* Devise
-⋅⋅* Paperclip
-⋅⋅* Bootstrap-sass
-⋅⋅* Font-awesome-sass
-⋅⋅* Simplecov
-⋅⋅* Capybara
-⋅⋅* Launchy
+Main gems added to Gemfile: 
+* Devise
+* Paperclip
+* Bootstrap-sass
+* Font-awesome-sass
+* Simplecov
+* Capybara
+* Launchy
 
-* Optional aplications:
-⋅⋅* Web-console
-⋅⋅* SourceTree
-⋅⋅* Aptana Studio 3
+Optional aplications:
+* Web-console
+* SourceTree
+* Aptana Studio 3
 
 Database used: sqlite 3.
 
