@@ -18,9 +18,10 @@
       <td><%=job_opening.salary_min%></td> 
       <td><%=job_opening.salary_max%></td> 
       <td><%=job_opening.profession.title%></td> 
-      <td><%=link_to("Borrar","/admin/" + job_opening.id.to_s, method: :delete,
+      <td><a class="btn btn-default" href="/admin/<%=job_opening.id%>/edit">Editar</a></td>	
+      <td><%=link_to("Borrar","/admin/" + job_opening.id.to_s, method: :delete, class: "btn btn-default",
                                     data:{confirm: '¿Seguro que quieres borrar?'})%></td>	
-      <td><a href="/admin/<%=job_opening.id%>/edit">Editar</a></td>					
+      				
     </tr>
   <% end%>		
 </table>
