@@ -1,28 +1,23 @@
+require 'test_helper'
 require "integration_test_helper"
 
-class CreatePlayerTest < ActionDispatch::IntegrationTest
-  setup do
-    # @user = User.new
-    # @user.save()
-  end
-
-  teardown do
-    # @user.destroy
-  end
-
-  def do_login!
-    # login through test method
-    assert_equal "", current_path
-  end
-
+class CreateJobOpeningTest < ActionDispatch::IntegrationTest
   test "create a new jobopening" do
-    do_login!
-
+    visit "/"
+    assert page.has_no_content?("asdfasdf")
+    click_button "login_button"
+    click_link "Sign up"
+    page.fill_in 'user_email', :with => 'asdfasdf@asdf.as'
+    page.fill_in 'user_password', :with => 'asdfasdf'
+    page.fill_in 'user_password_confirmation', :with => 'asdfasdf'
     visit "/admin/new"
-    assert page.has_field?("Name", with: "adfsdf")
-    click_button "Crear anuncio"
 
-    assert page.has_content?("adfsdf")
+    # page.fill_in 'job_opening_title', with: 'asdfasdf'
+    # page.fill_in 'job_opening_description', :with => 'Bob'
+    # click_button "Crear anuncio"
+    # visit "/"
+#     
+    # assert page.has_content?("asdfasdf")
   end
 
 end
